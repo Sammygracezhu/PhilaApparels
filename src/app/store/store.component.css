@@ -1,0 +1,11 @@
+.mybg{
+    background-image:url('https://d1dae5hvkno2c1.cloudfront.net/wp-content/uploads/2019/10/F19R4_ReleaseDay_ShopNow_WebBanner.png');
+
+    background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 200px;
+  border-block-style: initial;
+  border-radius: 0.5em;
+  
+};

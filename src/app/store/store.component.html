@@ -1,0 +1,70 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col bg-dark text-white" >
+            <a class="navbar-brand">APPARELS STORE</a>
+            <cart-summary></cart-summary>  
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 p-2 bg-light text-black">
+            <button class="btn btn-block btn-outline-primary" (click)="changeCategory()">
+                All
+            </button>
+            <button *ngFor="let cat of categories" class="btn btn-outline-primary btn-block"
+               [class.active]="cat == selectedCategory"
+               (click)="changeCategory(cat)">
+              {{cat}}
+            </button>
+            <button class="btn btn-block btn-danger m-t-3"
+            routerLink="/admin">
+           Admin
+        </button>
+        </div>
+        <div class="col-8 p-2">
+            <div *ngFor="let apparel of apparels" class="card m-1 p-1 bg-light">
+                <h4>
+                    <span class="col-3" >
+                        <img src={{img_loc}}{{apparel.img_cat+apparel.color}}{{img_file_type}} width="240" height="250" title="picture from American Apparel&copy;"/>
+                        
+                    </span> 
+                    <span class="badge badge-pill badge-primary float-right">
+                        {{apparel.price | currency:"USD"}}
+                    </span>
+                </h4>
+                <div>
+                    <span *ngFor="let c of apparel.colors">
+                    <span [ngSwitch]="c">
+                        <button *ngSwitchCase="'white'" class="btn btn-sm"
+                            style="background-color:white; border: 1px solid gray"
+                            (mouseover)="changeApparelColor(apparel,c)"></button>
+                            <button *ngSwitchCase="'black'" class="btn btn-sm"
+                            style="background-color:black; border: 1px solid gray"
+                            (mouseover)="changeApparelColor(apparel,c)"></button>
+                            <button *ngSwitchCase="'red'" class="btn btn-sm"
+                            style="background-color:red; border: 1px solid gray"
+                            (mouseover)="changeApparelColor(apparel,c)"></button>
+                            <button *ngSwitchCase="'grey'" class="btn btn-sm"
+                            style="background-color:grey; border: 1px solid gray"
+                            (mouseover)="changeApparelColor(apparel,c)"></button>
+                            <button *ngSwitchCase="'pink'" class="btn btn-sm"
+                            style="background-color:pink; border: 1px solid gray"
+                            (mouseover)="changeApparelColor(apparel,c)"></button>
+                    </span>
+                    </span>
+                    
+                    
+                </div>
+                <div class="car-text bg-white p-1">
+                        <h5>
+                                {{apparel.name}} 
+                        </h5>
+                    <strong>Detail:</strong>{{apparel.description}}
+                    <button class="btn btn-success btn-sm float-right"
+                         (click)="addApparelToCart(apparel)">
+                        Add To Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

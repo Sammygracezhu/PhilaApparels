@@ -1,0 +1,28 @@
+<table class="table table-sm table-striped">
+    <thead>
+        <tr>
+            <th>ID</th><th>Name</th><th>Category</th><th>description</th><th>Price</th><th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let a of getApparels()">
+            <td>{{a.id}}</td>
+            <td>{{a.name}}</td>
+            <td>{{a.category}}</td>
+            <td>{{a.description}}</td>
+            <td>{{a.price| currency:"USD"}}</td>
+            <td>
+                <button class="btn btn-sm btn-warning"
+                   [routerLink]="['/admin/main/apparels/edit', a.id]">
+                   Edit
+                </button>
+                <button class="btn btn-sm btn-danger" (click)="deleteApparel(a.id)">
+                    Delete
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button class="btn btn-primary" routerLink="/admin/main/apparels/create">
+  Create New Apparel
+</button>
